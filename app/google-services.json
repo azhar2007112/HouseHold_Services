@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "284995316929",
+    "firebase_url": "https://household-74654-default-rtdb.firebaseio.com",
+    "project_id": "household-74654",
+    "storage_bucket": "household-74654.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284995316929:android:a19fa155b41dc32125b840",
+        "android_client_info": {
+          "package_name": "com.example.onser"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMu33EpXnBXjgsIndl0QpDtzA_b6M7fZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

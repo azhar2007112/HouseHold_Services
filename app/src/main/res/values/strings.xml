@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Azhar</string>
+    <string name="open"></string>
+    <string name="close"></string>
+
+    <string name="Policy">Welcome to HouseHold Solution, your ultimate online companion designed to simplify your daily life challenges with just a click. Developed by  AZHAR UDDIN, this innovative platform, powered by OnSer, brings a user-friendly approach to addressing your everyday problems.
+
+Understanding the Essence of Services
+
+In the realm of HouseHold Solution, we acknowledge the fundamental nature of services. Unlike tangible goods, services are intangible, which means they lack physical presence. When you engage with our platform, you are delving into a world where intangibility is the norm. The services we offer are not physical products you can own; instead, they are solutions that cater to your specific needs.
+
+The Inconsistency and Inseparability of Services
+
+Services are inherently inconsistent because every customer brings unique expectations. What one person seeks in a service might differ from another, making customization and adaptability key. Moreover, services and their consumption are inseparable. Imagine the scenario of an ATM replacing certain banking tasks. While technology facilitates some activities, the interaction with the customer is indispensable. HouseHold Solution understands this dynamic interaction and manages it seamlessly.
+
+The Impossibility of Storage
+
+Unlike goods that can be stored in inventories, services cannot be stockpiled. The essence of a service lies in its performance, making it impossible to hoard services themselves. While related goods might be stored, the service itself is experienced and utilized in the moment.
+
+The Distinction Between Goods and Services
+
+At HouseHold Solution, we recognize the critical difference between goods and services. Goods are manufactured, but services are performed. Our platform focuses on providing services that cater to your needs, ensuring that every interaction with our application is a performance dedicated to enhancing your daily life.
+
+Join us at HouseHold Solution, where intangible services meet real-world solutions. Experience the revolution on the online platform, and let OnSer guide you through a world of endless possibilities. With us, your everyday problems find their match, one click at a time.
+    </string>
+
+    <string-array name="service_name">
+        <item>Electrician</item>
+        <item>Plumber</item>
+        <item>Carpenter</item>
+        <item>Masons</item>
+        <item>Paste Control</item>
+        <item>Security Guard</item>
+        <item>Maid</item>
+        <item>Wifi Provider</item>
+        <item>Labours</item>
+    </string-array>
+
+    <string-array name="service_price">
+        <item>500 Taka/Day</item>
+        <item>500 Taka/Day</item>
+        <item>500 Taka/Day</item>
+        <item>500 Taka/Day</item>
+        <item>500 Taka/Day</item>
+        <item>500 Taka/Day</item>
+        <item>500 Taka/Day</item>
+        <item>500 Taka/Month</item>
+        <item>500 Taka/Day</item>
+
+    </string-array>
+
+    <string-array name="price">
+        <item>500 Taka</item>
+
+    </string-array>
+
+    <string-array name="time_of_booking">
+        <item>9:00 AM</item>
+        <item>10:00 AM</item>
+        <item>11:00 AM</item>
+        <item>12:00 AM</item>
+        <item>1:00 PM</item>
+        <item>2:00 PM</item>
+        <item>3:00 PM</item>
+        <item>4:00 PM</item>
+        <item>5:00 PM</item>
+        <item>6:00 PM</item>
+        <item>7:00 PM</item>
+        <item>8:00 PM</item>
+        <item>9:00 PM</item>
+        <item>10:00 PM</item>
+        <item>11:00 PM</item>
+    </string-array>
+</resources>
