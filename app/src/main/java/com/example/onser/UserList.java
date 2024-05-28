@@ -28,12 +28,14 @@ public class UserList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
 
+        // Singleton Pattern: Obtaining a reference to the Firebase database
         ProgressDialog dialog=new ProgressDialog(UserList.this);
         dialog.setTitle("Loading User List");
         dialog.setMessage("Please Wait...");
         dialog.show();
 
         recyclerView=findViewById(R.id.userlist);
+        // Singleton Pattern: Obtaining a reference to the Firebase database
         databaseReference= FirebaseDatabase.getInstance().getReference("Getuser");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -42,6 +44,7 @@ public class UserList extends AppCompatActivity {
         adapter =new userlist_adapter(this,list);
         recyclerView.setAdapter(adapter);
 
+        // Observer Pattern: Listening for data changes in the Firebase database
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

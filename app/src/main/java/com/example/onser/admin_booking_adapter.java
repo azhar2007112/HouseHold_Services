@@ -95,10 +95,12 @@ public class admin_booking_adapter extends RecyclerView.Adapter<admin_booking_ad
             super(itemView);
 
             service= itemView.findViewById(R.id.ad_h_service_name);
-            address= itemView.findViewById(R.id.ad_h_address);
-            date= itemView.findViewById(R.id.ad_h_date);
-            time= itemView.findViewById(R.id.ad_h_time);
-            cost= itemView.findViewById(R.id.ad_h_cost);
+            address = itemView.findViewById(R.id.ad_h_address_value);
+            date = itemView.findViewById(R.id.ad_h_date_value);
+            time = itemView.findViewById(R.id.ad_h_time_value);
+            cost = itemView.findViewById(R.id.ad_h_cost_value);
+
+
             ad_option= itemView.findViewById(R.id.b_option);
 
         }

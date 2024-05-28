@@ -10,9 +10,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+        android:id="@+id/b_option"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:id="@+id/b_option"
         android:padding="5dp"
         android:text="&#8942;"
         android:textSize="20dp"
@@ -20,7 +20,6 @@
         android:layout_gravity="right"
         android:textAlignment="center"
         tools:ignore="RtlCompat" />
-
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -38,12 +37,13 @@
             <TextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/ad_h_service_name"
                 android:text="Booked"
                 android:textSize="18dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/ad_h_service_name"
+                android:id="@+id/ad_h_service_name_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
@@ -67,7 +67,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/ad_h_address"
+                android:id="@+id/ad_h_address_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=":"
@@ -75,6 +75,8 @@
                 android:textColor="@color/black"
                 android:textIsSelectable="true"/>
         </LinearLayout>
+
+        <!-- Add similar TextViews for Date, Time, Cost, and Payment Method with IDs -->
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -91,7 +93,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/ad_h_date"
+                android:id="@+id/ad_h_date_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
@@ -99,6 +101,7 @@
                 android:textColor="@color/black"
                 android:textIsSelectable="true"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,7 +117,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/ad_h_time"
+                android:id="@+id/ad_h_time_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
@@ -138,7 +141,7 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/ad_h_cost"
+                android:id="@+id/ad_h_cost_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
@@ -146,6 +149,7 @@
                 android:textColor="@color/black"
                 android:textIsSelectable="true"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,7 +174,4 @@
         </LinearLayout>
     </LinearLayout>
 
-
 </androidx.cardview.widget.CardView>
-
-

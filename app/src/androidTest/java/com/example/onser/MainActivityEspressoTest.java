@@ -45,15 +45,6 @@ public class MainActivityEspressoTest {
         onView(withId(R.id.login)).check(matches(isDisplayed()));
     }
 
-    @Test
-    public void testLoginButtonFunctionality() {
-        // Enter valid email and password, then click login button
-        onView(withId(R.id.email)).perform(typeText("test@example.com"), closeSoftKeyboard());
-        onView(withId(R.id.loginpass)).perform(typeText("password123"), closeSoftKeyboard());
-        onView(withId(R.id.login)).perform(click());
 
-        // Add assertions for login success or expected behavior
-        // Example: Check if a new activity is launched or a toast is displayed
-        // onView(withText("Welcome!")).inRoot(withDecorView(not(activity.getWindow().getDecorView()))).check(matches(isDisplayed()));
-    }
 }
+

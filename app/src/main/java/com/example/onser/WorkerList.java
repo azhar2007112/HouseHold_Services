@@ -19,53 +19,52 @@ import java.util.ArrayList;
 
 public class WorkerList extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    DatabaseReference databaseReference;
-    ArrayList<workers> w;
-    worker_adapter adapter1;
+    private RecyclerView recyclerView;
+    private DatabaseReference databaseReference;
+    private ArrayList<workers> workersList;
+    private worker_adapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_list);
 
-        ProgressDialog dialog=new ProgressDialog(WorkerList.this);
-        dialog.setTitle("Loading List");
-        dialog.setMessage("Please Wait...");
-        dialog.show();
+        setupRecyclerView();
+        setupFirebase();
+    }
 
-        recyclerView=findViewById(R.id.worker_details);
-        databaseReference= FirebaseDatabase.getInstance().getReference("workers");
-        recyclerView.setHasFixedSize(true);
+    private void setupRecyclerView() {
+        recyclerView = findViewById(R.id.worker_details);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        workersList = new ArrayList<>();
+        adapter = new worker_adapter(this, workersList);
+        recyclerView.setAdapter(adapter);
+    }
 
-        w= new  ArrayList<>();
-        adapter1 =new worker_adapter(this,w);
-        recyclerView.setAdapter(adapter1);
-
+    private void setupFirebase() {
+        databaseReference = FirebaseDatabase.getInstance().getReference("workers");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    workers ww= dataSnapshot.getValue(workers.class);
-                    ww.setKey(dataSnapshot.getKey());
-                    w.add(ww);
+                workersList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    workers worker = dataSnapshot.getValue(workers.class);
+                    worker.setKey(dataSnapshot.getKey());
+                    workersList.add(worker);
                 }
-                adapter1.notifyDataSetChanged();
-                dialog.dismiss();
+                adapter.notifyDataSetChanged();
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Handle onCancelled
             }
         });
-
-
     }
+
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(WorkerList.this,Admin_panel.class));
+        startActivity(new Intent(this, Admin_panel.class));
         finish();
     }
 }

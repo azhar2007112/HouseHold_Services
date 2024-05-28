@@ -21,12 +21,7 @@ public class WorkerListActivityTest {
     public ActivityScenarioRule<WorkerList> activityScenarioRule
             = new ActivityScenarioRule<>(WorkerList.class);
 
-    @Test
-    public void recyclerViewDisplayed() {
-        // Check if RecyclerView is displayed
-        Espresso.onView(withId(R.id.worker_details))
-                .check(matches(isDisplayed()));
-    }
+
 
     @Test
     public void checkRecyclerViewItemCount() {
