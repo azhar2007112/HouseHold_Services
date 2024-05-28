@@ -24,21 +24,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
-// Factory Method for creating ProgressDialog instances
-class DialogFactory {
-    public static ProgressDialog createProgressDialog(MainActivity activity, String title, String message) {
-        ProgressDialog dialog = new ProgressDialog(activity);
-        dialog.setTitle(title);
-        dialog.setMessage(message);
-        return dialog;
-    }
-}
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView forgetpassword, reg;
-    private EditText editemail, editpass;
+    private TextView forgetpassword,reg;
+    private EditText editemail,editpass;
     private Button login;
+
+
+    //private ProgressBar progressBar;
+
     private FirebaseAuth mAuth;
 
     @SuppressLint("MissingInflatedId")
@@ -47,24 +41,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Singleton pattern: get the single instance of FirebaseAuth
-        mAuth = FirebaseAuth.getInstance();
-        editemail = (EditText) findViewById(R.id.email);
-        editpass = (EditText) findViewById(R.id.loginpass);
+        //progressBar=(ProgressBar)findViewById(R.id.progressbarLogin);
 
-        reg = (TextView) findViewById(R.id.register);
+        mAuth=FirebaseAuth.getInstance();
+        editemail=(EditText)findViewById(R.id.email);
+        editpass=(EditText)findViewById(R.id.loginpass);
+
+        reg =(TextView) findViewById(R.id.register);
         reg.setOnClickListener(this);
 
-        login = (Button) findViewById(R.id.login);
+        login=(Button) findViewById(R.id.login);
         login.setOnClickListener(this);
 
-        forgetpassword = (TextView) findViewById(R.id.forgetpass);
+        forgetpassword=(TextView) findViewById(R.id.forgetpass);
         forgetpassword.setOnClickListener(this);
+
+
     }
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder alert= new AlertDialog.Builder(MainActivity.this);
         alert.setTitle("Exit OnSer");
         alert.setMessage("Do you want to exit?");
         alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -84,9 +81,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+        switch (view.getId()){
             case R.id.register:
-                Intent intent = new Intent(MainActivity.this, Register.class);
+                Intent intent=new Intent(MainActivity.this,Register.class);
                 startActivity(intent);
                 finish();
                 break;
@@ -96,73 +93,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.forgetpass:
-                startActivity(new Intent(MainActivity.this, ForgetPassword.class));
+                startActivity(new Intent(MainActivity.this,ForgetPassword.class));
                 finish();
                 break;
+
         }
+
     }
 
-    // Template Method Pattern: Refactored the sequence of operations
     private void userlogin() {
-        ProgressDialog dialog = DialogFactory.createProgressDialog(this, "Loading", "Please Wait...");
+        ProgressDialog dialog=new ProgressDialog(MainActivity.this);
+        dialog.setTitle("Loading");
+        dialog.setMessage("Please Wait...");
         dialog.show();
+        String loginemail= editemail.getText().toString().trim();
+        String loginpass= editpass.getText().toString().trim();
 
-        String loginemail = editemail.getText().toString().trim();
-        String loginpass = editpass.getText().toString().trim();
-
-        if (!validateInputs(loginemail, loginpass, dialog)) {
-            return;
-        }
-
-        performLogin(loginemail, loginpass, dialog);
-    }
-
-    private boolean validateInputs(String email, String password, ProgressDialog dialog) {
-        if (email.isEmpty()) {
+        if(loginemail.isEmpty())
+        {
             dialog.dismiss();
             editemail.setError("Email can't be empty");
             editemail.requestFocus();
-            return false;
+            return;
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if(!Patterns.EMAIL_ADDRESS.matcher(loginemail).matches()){
             dialog.dismiss();
             editemail.setError("Enter valid email");
             editemail.requestFocus();
-            return false;
+            return;
         }
-        if (password.isEmpty()) {
+        if (loginpass.isEmpty()){
             dialog.dismiss();
             editpass.setError("Password can't be empty");
             editpass.requestFocus();
-            return false;
+            return;
         }
-        if (password.length() < 6) {
+        if(loginpass.length()<6){
             dialog.dismiss();
             editpass.setError("Password length should be greater than 6 char");
             editpass.requestFocus();
-            return false;
+            return;
         }
-        return true;
-    }
+        //progressBar.setVisibility(View.VISIBLE);
+        mAuth.signInWithEmailAndPassword(loginemail,loginpass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
-    private void performLogin(String email, String password, ProgressDialog dialog) {
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    try {
-                        dialog.dismiss();
-                        Toast.makeText(MainActivity.this, "LogIn Successful...", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, Login_preference.class));
-                        finish();
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
+                            try {
+                                dialog.dismiss();
+                                Toast.makeText(MainActivity.this, "LogIn Successful...", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(MainActivity.this,Login_preference.class));
+                                finish();
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                        }else {
+                            dialog.dismiss();
+                            Toast.makeText(MainActivity.this, "LogIn Failed! Try again...", Toast.LENGTH_SHORT).show();
+                            //progressBar.setVisibility(View.GONE);
+                        }
                     }
-                } else {
-                    dialog.dismiss();
-                    Toast.makeText(MainActivity.this, "LogIn Failed! Try again...", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                });
     }
 }

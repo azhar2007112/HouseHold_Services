@@ -28,7 +28,12 @@ public class UserListActivityTest {
         ActivityScenario.launch(UserList.class);
     }
 
-
+    @Test
+    public void testRecyclerViewDisplayed() {
+        // Check if RecyclerView is displayed
+        Espresso.onView(withId(R.id.userlist))
+                .check(matches(isDisplayed()));
+    }
 
     @Test
     public void testScrollRecyclerView() {

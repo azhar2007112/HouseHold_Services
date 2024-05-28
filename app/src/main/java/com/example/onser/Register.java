@@ -40,7 +40,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mAuth= FirebaseAuth.getInstance();//singleton
+        mAuth= FirebaseAuth.getInstance();
 
 
         register= (Button) findViewById(R.id.register2);
@@ -162,7 +162,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Getuser getuser=new Getuser(fn,em,num,add);// Factory design pattern
+                            Getuser getuser=new Getuser(fn,em,num,add);
                             FirebaseDatabase.getInstance().getReference("Getuser")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(getuser).addOnCompleteListener(new OnCompleteListener<Void>() {

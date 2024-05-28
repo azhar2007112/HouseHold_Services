@@ -4,52 +4,56 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/drawerHeader"
-        android:layout_marginTop="25dp"
         android:layout_marginBottom="15dp"
+        android:layout_marginTop="25dp"
+        android:id="@+id/drawarHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <ImageView
-            android:id="@+id/logoImageView"
             android:layout_marginLeft="10dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/logo_onser"/>
+            android:src="@drawable/logo_onser"
+            />
 
         <LinearLayout
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            >
             <TextView
-                android:id="@+id/appNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="@string/app_name"
                 android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="@string/app_name"
+                android:layout_marginLeft="10dp"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                />
 
             <TextView
-                android:id="@+id/descriptionTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Fast Home Service"
                 android:textColor="#AE000000"
-                android:textSize="16sp"/>
+                android:text="Fast Home Service"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                />
+
         </LinearLayout>
+
     </LinearLayout>
 
     <View
-        android:id="@+id/separatorView"
+        android:elevation="5dp"
+        android:layout_below="@id/drawarHeader"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/drawerHeader"
-        android:elevation="5dp"
-        android:background="#43000000"/>
+        android:background="#43000000"
+        />
+
 </RelativeLayout>

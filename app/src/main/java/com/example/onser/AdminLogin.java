@@ -37,7 +37,7 @@ public class AdminLogin extends AppCompatActivity {
             public void onClick(View view) {
                 String pass= password.getText().toString().trim();
                 String gm=gmail.getText().toString().trim();
-                String pass1="112";
+                String pass1="2007112";
                 String pass2="josephiteazharuddin@gmail.com";
                 if(pass.equals(pass1) && gm.equals(pass2)){
                     startActivity(new Intent(AdminLogin.this,Admin_panel.class));

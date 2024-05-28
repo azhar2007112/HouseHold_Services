@@ -1,12 +1,10 @@
 package com.example.onser;
 
-import android.app.Activity;
-
 import com.google.firebase.database.Exclude;
 
 import java.io.Serializable;
 
-public class workers extends Activity implements Serializable {
+public class workers implements Serializable {
 
     @Exclude
     String key;
