@@ -16,7 +16,7 @@ public class Services_info extends AppCompatActivity implements ServiceListener 
 
     };
 
-    services ser;
+    Services ser;
     String[] title,price;
 
     RecyclerView recyclerView;
@@ -30,7 +30,7 @@ public class Services_info extends AppCompatActivity implements ServiceListener 
         title=getResources().getStringArray(R.array.service_name);
         price=getResources().getStringArray(R.array.service_price);
 
-        ser =new services(this,title,price,images, this);
+        ser =new Services(this,title,price,images, this);
 
         recyclerView.setAdapter(ser);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

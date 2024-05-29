@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class services extends RecyclerView.Adapter<services.MyViewHolder> {
+public class Services extends RecyclerView.Adapter<Services.MyViewHolder> {
 
     private  final ServiceListener serviceListener;
 
@@ -56,7 +56,7 @@ public class services extends RecyclerView.Adapter<services.MyViewHolder> {
         this.image = image;
     }
 
-    public services(Context context, String[] title, String[] price, int[] image, ServiceListener serviceListener) {
+    public Services(Context context, String[] title, String[] price, int[] image, ServiceListener serviceListener) {
         this.context = context;
         this.title = title;
         this.price = price;
